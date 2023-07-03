@@ -1,0 +1,43 @@
+﻿@model IEnumerable<InventorySystemApplication.VMs.UserProductVM>
+
+@{
+    ViewData["Title"] = "UserProducts";
+}
+
+<h1>UserProducts</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Manufacturing Date
+            </th>
+            <th>
+                Expiry Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var obj in Model) {
+    @if(@obj.Warehouses.Id == 1){
+        <tr>
+            <td>
+                @obj.Products.Product_Name
+            </td>
+            <td>
+                @obj.Products.Manufacturing_Date
+            </td>
+            <td>
+               @obj.Products.Expiry_Date
+            </td>
+        </tr>
+        }
+}
+    </tbody>
+</table>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<InventorySystemApplication.VMs.UserVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New User</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Telephone
+            </th>
+            <th>
+                Warehouse
+            </th>
+            <th>
+                Password
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var obj in Model) {
+        <tr>
+            <td>
+                @obj.User_Name
+            </td>
+            <td>
+                @obj.User_Email
+            </td>
+            <td>
+                @obj.User_Telephone
+            </td>
+            <td>
+                @obj.Warehouses.Name
+            </td>
+            <td>
+                @obj.Password
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@obj.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@obj.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="AdminMenu">Back To Menu</a>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<InventorySystemApplication.VMs.UserProductVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product 
+            </th>
+            <th>
+                Warehouse
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var obj in Model) {
+        <tr>
+            <td>
+                @obj.Products.Product_Name
+            </td>
+            <td>
+                @obj.Warehouses.Name
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@obj.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@obj.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

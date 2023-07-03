@@ -1,0 +1,68 @@
+﻿@model IEnumerable<InventorySystemApplication.VMs.StockInVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Stock</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Warehouse
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Document Number
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var obj in Model) {
+        <tr>
+            <td>
+                @obj.Products.Product_Name
+            </td>
+            <td>
+                @obj.Quantity_In
+            </td>
+            <td>
+                @obj.Warehouses.Name
+            </td>
+            <td>
+                @obj.Date_In
+            </td>
+            <td>
+                @obj.Users.User_Name
+            </td>
+            <td>
+                @obj.Document_Number
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@obj.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@obj.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="UserMenu">Back To Menu</a>
+</div>

@@ -1,0 +1,94 @@
+﻿@model InventorySystemApplication.Models.StockTransfer
+
+@{
+    ViewData["Title"] = "Create";
+    var prod = ViewBag.Products as List<Product>;
+    var war = ViewBag.Warehouses as List<Warehouse>;
+    var use = ViewBag.Users as List<User>;
+}
+
+<h1>Create</h1>
+
+<h4>StockTransfer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product_Id" class="control-label"></label>
+                <select asp-for="Product_Id" class="form-control">
+                <option value="">Select a Product</option>
+                @if(prod != null){
+                    @foreach(var product in prod){
+                        <option value="@product.Id">@product.Product_Name</option>
+                    }
+                }
+                </select>
+                <span asp-validation-for="Product_Id" class="text-danger"></span>
+            </div>
+            <!-- <div class="form-group">
+                <label asp-for="Warehouse_FromId" class="control-label"></label>
+                <select asp-for="Warehouse_FromId" class="form-control">
+                <option value="">Select the sending warehouse</option>
+                @if(war != null){
+                    @foreach(var warehouse in war){
+                        <option value="@warehouse.Id">@warehouse.Name</option>
+                    }
+                }
+                </select>
+                <span asp-validation-for="Warehouse_FromId" class="text-danger"></span>
+            </div> -->
+            <div class="form-group">
+                <label asp-for="Warehouse_ToId" class="control-label"></label>
+                <select asp-for="Warehouse_ToId" class="form-control">
+                <option value="">Select the receiving warehouse</option>
+                @if(war != null){
+                    @foreach(var warehouse in war){
+                        <option value="@warehouse.Id">@warehouse.Name</option>
+                    }
+                }
+                </select>
+                <span asp-validation-for="Warehouse_ToId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <!-- <div class="form-group">
+                <label asp-for="User_Id" class="control-label"></label>
+                <select asp-for="User_Id" class="form-control">
+                <option value="">Select a user</option>
+                @if(use != null){
+                    @foreach(var user in use){
+                        <option value="@user.Id">@user.User_Name</option>
+                    }
+                }
+                </select>
+                <span asp-validation-for="User_Id" class="text-danger"></span>
+            </div> -->
+            <div class="form-group">
+                <label asp-for="Transfer_Date" class="control-label"></label>
+                <input asp-for="Transfer_Date" class="form-control" />
+                <span asp-validation-for="Transfer_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Document_Number" class="control-label"></label>
+                <input asp-for="Document_Number" class="form-control" />
+                <span asp-validation-for="Document_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
