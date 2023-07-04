@@ -41,7 +41,7 @@ namespace InventorySystemApplication.Controllers
          
          public async Task<IActionResult> IndexForUser()
         {
-            List<StockInVM> objStockIn = _context.StockInTable.Where(n => n.Warehouse_Id == TempData.Warehouse).Select(n => new StockInVM{
+            List<StockInVM> objStockIn = _context.StockInTable.Where(n => n.Warehouse_Id == HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockInVM{
                 Id = n.Id,
                 Product_Id = n.Product_Id,
                 Quantity_In = n.Quantity_In,
@@ -95,8 +95,8 @@ namespace InventorySystemApplication.Controllers
             bool empty = true;
             if (ModelState.IsValid)
             {
-                stockIn.Warehouse_Id = TempData.Warehouse;
-                stockIn.User_Id = TempData.User;
+                stockIn.Warehouse_Id = (int)HttpContext.Session.GetInt32("Warehouse") ;
+                stockIn.User_Id = (int)HttpContext.Session.GetInt32("User") ;
             List<StockLevel> stocklevlObj = _context.StockLevelTable.ToList();
             List<WarehouseProduct> wpObj = _context.WarehouseProductTable.ToList();
             

@@ -58,25 +58,25 @@
 <body>
   <h1>Menu</h1>
 
-    <div class="product-card" onclick="window.location.href = '@Url.Action("Index", "Product")'">
+    <div class="product-card" onclick="window.location.href = '@Url.Action("IndexForUser", "StockLevels")'">
         <i class="fas fa-bar-chart"></i>
     <h2>Stock Level</h2>
     <p>View amount of stock in your warehouse</p>
   </div>
 
-    <div class="product-card" onclick="window.location.href = '@Url.Action(" UserProducts", "WarehouseProducts")'">
+    <div class="product-card" onclick="window.location.href = '@Url.Action("UserProducts", "WarehouseProducts")'">
         <i class="fas fa-cube"></i>
     <h2>Products</h2>
     <p>View all available products</p>
   </div>
 
-    <div class="product-card" onclick="window.location.href = '@Url.Action("Index", "StockIns")'">
+    <div class="product-card" onclick="window.location.href = '@Url.Action("IndexForUser", "StockIns")'">
         <i class="fas fa-plus-circle"></i>
     <h2>Add Stock</h2>
     <p>Add stock in your warehouse</p>
   </div>
 
-    <div class="product-card" onclick="window.location.href = '@Url.Action("Index", "StockTransfers")'">
+    <div class="product-card" onclick="window.location.href = '@Url.Action("IndexForUser", "StockTransfers")'">
         <i class="fas fa-truck"></i>
     <h2>Transfer Stock</h2>
     <p>Move stock to other warehouses</p>

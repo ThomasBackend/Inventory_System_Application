@@ -1,0 +1,75 @@
+﻿@model IEnumerable<InventorySystemApplication.VMs.StockTfVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Record new Transfer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Document Number
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Products.Product_Name
+                </td>
+                <td>
+                    @obj.WarehousesFrom.Name
+                </td>
+                <td>
+                    @obj.WarehousesTo.Name
+                </td>
+                <td>
+                    @obj.Quantity
+                </td>
+                <td>
+                    @obj.Users.User_Name
+                </td>
+                <td>
+                    @obj.Transfer_Date
+                </td>
+                <td>
+                    @obj.Document_Number
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@obj.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@obj.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="AdminMenu">Back To Menu</a>
+</div>

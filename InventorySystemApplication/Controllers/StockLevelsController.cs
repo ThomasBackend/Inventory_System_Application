@@ -36,7 +36,7 @@ namespace InventorySystemApplication.Controllers
         }
         public async Task<IActionResult> IndexForUser()
         {
-            List<StockLevelVM> objStockLevel = _context.StockLevelTable.Where(n => n.Warehouse_Id == TempData.Warehouse).Select(n => new StockLevelVM{
+            List<StockLevelVM> objStockLevel = _context.StockLevelTable.Where(n => n.Warehouse_Id == HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockLevelVM{
                 Id = n.Id,
                 Quantity_In_Stock = n.Quantity_In_Stock,
                 Product_Id = n.Product_Id,

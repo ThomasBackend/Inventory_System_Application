@@ -41,10 +41,10 @@ namespace InventorySystemApplication.Controllers
             }
             else if (userStatus != null && adminStatus == null)
             {
-                foreach(var stat in userStatus){
-                    TempData.Warehouse = stat.Warehouse_Id;
-                    TempData.User = stat.Id;
-                }
+                
+                    HttpContext.Session.SetInt32("Warehouse", userStatus.Warehouse_Id);
+                    HttpContext.Session.SetInt32("User", userStatus.Id);
+                
                 return RedirectToAction(nameof(UserMenu));
             }
 

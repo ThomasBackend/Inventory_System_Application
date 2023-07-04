@@ -176,7 +176,7 @@ namespace InventorySystemApplication.Controllers
         }
          public IActionResult UserProducts()
         {
-            List<UserProductVM> objProductsList = _context.WarehouseProductTable.Where(n => n.Warehouse_Id == TempData.Warehouse).Select(n => new UserProductVM
+            List<UserProductVM> objProductsList = _context.WarehouseProductTable.Where(n => n.Warehouse_Id == HttpContext.Session.GetInt32("Warehouse")).Select(n => new UserProductVM
             {
                 Id = n.Id,
                 Warehouse_Id = n.Warehouse_Id,

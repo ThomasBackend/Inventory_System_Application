@@ -42,7 +42,7 @@ namespace InventorySystemApplication.Controllers
         }
         public async Task<IActionResult> IndexForUser()
         {
-            List<StockTfVM> objStockTf = _context.StockTransfersTable.Where(n => n.Warehouse_FromId == TempData.Warehouse).Select(n => new StockTfVM{
+            List<StockTfVM> objStockTf = _context.StockTransfersTable.Where(n => n.Warehouse_FromId == HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockTfVM{
                 Id = n.Id,
                 Product_Id = n.Product_Id,
                 Warehouse_FromId = n.Warehouse_FromId,
@@ -98,8 +98,8 @@ namespace InventorySystemApplication.Controllers
         {
            if (ModelState.IsValid)
             {
-                stockTransfer.Warehouse_FromId = TempData.Warehouse;
-                stockTransfer.User_Id = TempData.User;
+                stockTransfer.Warehouse_FromId = (int)HttpContext.Session.GetInt32("Warehouse");
+                stockTransfer.User_Id = (int)HttpContext.Session.GetInt32("User");
                 List<StockLevel> stocklevlObj = _context.StockLevelTable.ToList();
                 List<WarehouseProduct> warehouseProductObj = _context.WarehouseProductTable.ToList();
                 int exists = 0;
