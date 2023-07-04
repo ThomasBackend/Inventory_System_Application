@@ -14,13 +14,14 @@ namespace InventorySystemApplication.Controllers
 {
     public class StockInsController : Controller
     {
+        private readonly IHttpContextAccessor contxt;
         private readonly ApplicationDbContext _context;
 
-        public StockInsController(ApplicationDbContext context)
+        public StockInsController(ApplicationDbContext context,IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            contxt = httpContextAccessor;
         }
-
         // GET: StockIns
         public async Task<IActionResult> Index()
         {
@@ -41,7 +42,7 @@ namespace InventorySystemApplication.Controllers
          
          public async Task<IActionResult> IndexForUser()
         {
-            List<StockInVM> objStockIn = _context.StockInTable.Where(n => n.Warehouse_Id == HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockInVM{
+            List<StockInVM> objStockIn = _context.StockInTable.Where(n => n.Warehouse_Id == contxt.HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockInVM{
                 Id = n.Id,
                 Product_Id = n.Product_Id,
                 Quantity_In = n.Quantity_In,
@@ -95,8 +96,8 @@ namespace InventorySystemApplication.Controllers
             bool empty = true;
             if (ModelState.IsValid)
             {
-                stockIn.Warehouse_Id = (int)HttpContext.Session.GetInt32("Warehouse") ;
-                stockIn.User_Id = (int)HttpContext.Session.GetInt32("User") ;
+                stockIn.Warehouse_Id = (int)contxt.HttpContext.Session.GetInt32("Warehouse") ;
+                stockIn.User_Id = (int)contxt.HttpContext.Session.GetInt32("User") ;
             List<StockLevel> stocklevlObj = _context.StockLevelTable.ToList();
             List<WarehouseProduct> wpObj = _context.WarehouseProductTable.ToList();
             

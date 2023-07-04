@@ -13,12 +13,14 @@ namespace InventorySystemApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IHttpContextAccessor contxt;
         private readonly ApplicationDbContext _context;
 
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            contxt = httpContextAccessor;
         }
     
         public IActionResult Index()
@@ -42,8 +44,9 @@ namespace InventorySystemApplication.Controllers
             else if (userStatus != null && adminStatus == null)
             {
                 
-                    HttpContext.Session.SetInt32("Warehouse", userStatus.Warehouse_Id);
-                    HttpContext.Session.SetInt32("User", userStatus.Id);
+                    contxt.HttpContext.Session.SetInt32("Warehouse", userStatus.Warehouse_Id);
+                    contxt.HttpContext.Session.SetInt32("User", userStatus.Id);
+                
                 
                 return RedirectToAction(nameof(UserMenu));
             }

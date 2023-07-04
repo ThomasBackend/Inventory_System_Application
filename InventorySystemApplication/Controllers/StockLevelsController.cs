@@ -14,11 +14,13 @@ namespace InventorySystemApplication.Controllers
 {
     public class StockLevelsController : Controller
     {
+        private readonly IHttpContextAccessor contxt;
         private readonly ApplicationDbContext _context;
 
-        public StockLevelsController(ApplicationDbContext context)
+        public StockLevelsController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            contxt = httpContextAccessor;
         }
 
         // GET: StockLevels
@@ -36,7 +38,7 @@ namespace InventorySystemApplication.Controllers
         }
         public async Task<IActionResult> IndexForUser()
         {
-            List<StockLevelVM> objStockLevel = _context.StockLevelTable.Where(n => n.Warehouse_Id == HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockLevelVM{
+            List<StockLevelVM> objStockLevel = _context.StockLevelTable.Where(n => n.Warehouse_Id == contxt.HttpContext.Session.GetInt32("Warehouse")).Select(n => new StockLevelVM{
                 Id = n.Id,
                 Quantity_In_Stock = n.Quantity_In_Stock,
                 Product_Id = n.Product_Id,

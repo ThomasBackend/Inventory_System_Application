@@ -25,7 +25,6 @@
     </thead>
     <tbody>
 @foreach (var obj in Model) {
-    @if(@obj.Warehouses.Id == 1){
         <tr>
             <td>
                 @obj.Products.Product_Name
@@ -38,6 +37,6 @@
             </td>
         </tr>
         }
-}
+
     </tbody>
 </table>

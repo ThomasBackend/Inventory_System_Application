@@ -13,11 +13,13 @@ namespace InventorySystemApplication.Controllers
 {
     public class WarehouseProductsController : Controller
     {
+        private readonly IHttpContextAccessor contxt;
         private readonly ApplicationDbContext _context;
 
-        public WarehouseProductsController(ApplicationDbContext context)
+        public WarehouseProductsController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            contxt = httpContextAccessor;
         }
 
         // GET: WarehouseProducts
@@ -176,7 +178,7 @@ namespace InventorySystemApplication.Controllers
         }
          public IActionResult UserProducts()
         {
-            List<UserProductVM> objProductsList = _context.WarehouseProductTable.Where(n => n.Warehouse_Id == HttpContext.Session.GetInt32("Warehouse")).Select(n => new UserProductVM
+            List<UserProductVM> objProductsList = _context.WarehouseProductTable.Where(n => n.Warehouse_Id == contxt.HttpContext.Session.GetInt32("Warehouse")).Select(n => new UserProductVM
             {
                 Id = n.Id,
                 Warehouse_Id = n.Warehouse_Id,
