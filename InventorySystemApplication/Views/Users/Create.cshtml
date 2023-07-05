@@ -1,11 +1,11 @@
 ﻿@model InventorySystemApplication.Models.User
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create User";
     var war = ViewBag.Warehouses as List<Warehouse>;
 }
 
-<h1>Create</h1>
+<h1>Create New User</h1>
 
 <h4>User</h4>
 <hr />
@@ -14,22 +14,22 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="User_Name" class="control-label"></label>
+                <label asp-for="User_Name" class="control-label">User Name</label>
                 <input asp-for="User_Name" class="form-control" />
                 <span asp-validation-for="User_Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User_Email" class="control-label"></label>
+                <label asp-for="User_Email" class="control-label">Email</label>
                 <input asp-for="User_Email" class="form-control" />
                 <span asp-validation-for="User_Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User_Telephone" class="control-label"></label>
+                <label asp-for="User_Telephone" class="control-label">Telephone Number</label>
                 <input asp-for="User_Telephone" class="form-control" />
                 <span asp-validation-for="User_Telephone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Warehouse_Id" class="control-label"></label>
+                <label asp-for="Warehouse_Id" class="control-label">Warehouse</label>
                 <select asp-for="Warehouse_Id" class="form-control" >
                 <option value="">Select a Warehouse</option>
                 @if(war != null)
@@ -43,7 +43,7 @@
                 <span asp-validation-for="Warehouse_Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label">Password</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -55,7 +55,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>
 
 @section Scripts {

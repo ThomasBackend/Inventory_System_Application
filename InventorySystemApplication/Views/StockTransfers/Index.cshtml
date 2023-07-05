@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<InventorySystemApplication.VMs.StockTfVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Stock Transfer";
 }
 
-<h1>Index</h1>
+<h1>Stock Transfer</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Record new Transfer</a>
@@ -61,14 +61,13 @@
                 @obj.Document_Number
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@obj.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@obj.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
 <div>
-    <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="AdminMenu">Back To Menu</a>
+    <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="AdminMenu" >Back To Menu</a>
 </div>

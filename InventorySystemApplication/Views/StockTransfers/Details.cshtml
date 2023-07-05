@@ -1,13 +1,13 @@
 ﻿@model InventorySystemApplication.Models.StockTransfer
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Stock Transfer Details";
 }
 
-<h1>Details</h1>
+<h1>Stock Transfer Details</h1>
 
 <div>
-    <h4>StockTransfer</h4>
+    <h4>Stock Transfer</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -55,6 +55,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-danger">Edit</a> |
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>

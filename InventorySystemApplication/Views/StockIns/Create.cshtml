@@ -1,13 +1,13 @@
 ﻿@model InventorySystemApplication.Models.StockIn
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Enter Stock";
     var prod = ViewBag.Products as List<Product>;
     var use = ViewBag.Users as List<User>;
     var war = ViewBag.Warehouses as List<Warehouse>;
 ;}
 
-<h1>Create</h1>
+<h1>Enter Stock</h1>
 
 <h4>StockIn</h4>
 <hr />
@@ -16,7 +16,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Product_Id" class="control-label"></label>
+                <label asp-for="Product_Id" class="control-label">Product</label>
                 <select asp-for="Product_Id" Class="form-control">
                 <option value="">Select a Product</option>
                 @if(prod != null){
@@ -28,7 +28,7 @@
                 <span asp-validation-for="Product_Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Quantity_In" class="control-label"></label>
+                <label asp-for="Quantity_In" class="control-label">Quantity</label>
                 <input asp-for="Quantity_In" class="form-control" />
                 <span asp-validation-for="Quantity_In" class="text-danger"></span>
             </div>
@@ -45,7 +45,7 @@
                 <span asp-validation-for="Warehouse_Id" class="text-danger"></span>
             </div> -->
             <div class="form-group">
-                <label asp-for="Date_In" class="control-label"></label>
+                <label asp-for="Date_In" class="control-label">Date</label>
                 <input asp-for="Date_In" class="form-control" />
                 <span asp-validation-for="Date_In" class="text-danger"></span>
             </div>
@@ -62,7 +62,7 @@
                 <span asp-validation-for="User_Id" class="text-danger"></span>
             </div> -->
             <div class="form-group">
-                <label asp-for="Document_Number" class="control-label"></label>
+                <label asp-for="Document_Number" class="control-label">Document Number</label>
                 <input asp-for="Document_Number" class="form-control" />
                 <span asp-validation-for="Document_Number" class="text-danger"></span>
             </div>
@@ -74,7 +74,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>
 
 @section Scripts {

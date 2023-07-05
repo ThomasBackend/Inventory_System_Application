@@ -1,10 +1,10 @@
 ﻿@model InventorySystemApplication.Models.StockTransfer
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Stock Transfer";
 }
 
-<h1>Edit</h1>
+<h1>Edit Stock Transfer Details</h1>
 
 <h4>StockTransfer</h4>
 <hr />
@@ -14,37 +14,37 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Product_Id" class="control-label"></label>
+                <label asp-for="Product_Id" class="control-label">Product</label>
                 <input asp-for="Product_Id" class="form-control" />
                 <span asp-validation-for="Product_Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Warehouse_FromId" class="control-label"></label>
+                <label asp-for="Warehouse_FromId" class="control-label">Sending Warehouse</label>
                 <input asp-for="Warehouse_FromId" class="form-control" />
                 <span asp-validation-for="Warehouse_FromId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Warehouse_ToId" class="control-label"></label>
+                <label asp-for="Warehouse_ToId" class="control-label">Recipient Warehouse</label>
                 <input asp-for="Warehouse_ToId" class="form-control" />
                 <span asp-validation-for="Warehouse_ToId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
+                <label asp-for="Quantity" class="control-label">Quantity</label>
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User_Id" class="control-label"></label>
+                <label asp-for="User_Id" class="control-label">User</label>
                 <input asp-for="User_Id" class="form-control" />
                 <span asp-validation-for="User_Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Transfer_Date" class="control-label"></label>
+                <label asp-for="Transfer_Date" class="control-label">Date</label>
                 <input asp-for="Transfer_Date" class="form-control" />
                 <span asp-validation-for="Transfer_Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Document_Number" class="control-label"></label>
+                <label asp-for="Document_Number" class="control-label">Document Number</label>
                 <input asp-for="Document_Number" class="form-control" />
                 <span asp-validation-for="Document_Number" class="text-danger"></span>
             </div>
@@ -56,7 +56,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>
 
 @section Scripts {

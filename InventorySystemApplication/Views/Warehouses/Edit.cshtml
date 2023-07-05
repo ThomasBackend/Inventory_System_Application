@@ -1,10 +1,10 @@
 ﻿@model InventorySystemApplication.Models.Warehouse
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Warehouse Details";
 }
 
-<h1>Edit</h1>
+<h1>Edit Warehouse Details</h1>
 
 <h4>Warehouse</h4>
 <hr />
@@ -14,22 +14,22 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Name</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label">Address</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Phone_Number" class="control-label"></label>
+                <label asp-for="Phone_Number" class="control-label">Phone Number</label>
                 <input asp-for="Phone_Number" class="form-control" />
                 <span asp-validation-for="Phone_Number" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email_Address" class="control-label"></label>
+                <label asp-for="Email_Address" class="control-label">Email</label>
                 <input asp-for="Email_Address" class="form-control" />
                 <span asp-validation-for="Email_Address" class="text-danger"></span>
             </div>
@@ -41,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>
 
 @section Scripts {
