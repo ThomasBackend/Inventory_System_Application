@@ -206,7 +206,7 @@ namespace InventorySystemApplication.Controllers
                     }
 
                 }
-                var secStockObj = _context.StockLevelTable.Where(n => n.Warehouse_Id == stockTransfer.Warehouse_Id && n.Product_Id == stockTransfer.Product_Id).FirstOrDefault();
+                var secStockObj = _context.StockLevelTable.Where(n => n.Warehouse_Id == stockTransfer.Warehouse_FromId && n.Product_Id == stockTransfer.Product_Id).FirstOrDefault();
                 
 
                 if(secStockObj.Quantity_In_Stock == 0){

@@ -18,7 +18,7 @@ namespace InventorySystemApplication.Models
         public Product()
         {
             Status = "Available";
-        }
+         }
       
 
 
