@@ -24,15 +24,15 @@ namespace InventorySystemApplication.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            List<UserVM> objUser = _context.UsersTable.Select(n => new UserVM{
+            List<UserVM> objUser = _context.UsersTable.Select(n => new UserVM {
                 Id = n.Id,
                 User_Name = n.User_Name,
                 User_Email = n.User_Email,
                 User_Telephone = n.User_Telephone,
                 Warehouse_Id = n.Warehouse_Id,
                 Password = n.Password,
-                Warehouses = _context.WarehousesTable.FirstOrDefault(w => w.Id == n.Warehouse_Id)
-            }).ToList(); 
+                Warehouses = _context.WarehousesTable.Where(w => w.Id == n.Warehouse_Id).FirstOrDefault()
+        }).ToList(); 
               return View(objUser);
         }
 
@@ -82,6 +82,12 @@ namespace InventorySystemApplication.Controllers
                 _context.SystemUsersTable.Add(systemuser);
                 _context.Add(user);
                 await _context.SaveChangesAsync();
+                var use = _context.UsersTable.Where(n => n.User_Name == user.User_Name && n.Password == user.Password).FirstOrDefault();
+                var sysUser = _context.SystemUsersTable.Where(n => n.User_Name == user.User_Name && n.Password == user.Password).FirstOrDefault();
+                sysUser.User_Id = use.Id;
+                _context.SystemUsersTable.Update(sysUser);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
