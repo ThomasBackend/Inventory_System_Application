@@ -17,6 +17,8 @@ namespace InventorySystemApplication.Models
         public int Warehouse_Id { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public int User_Id { get; set; }
         public string UserType { get; set; }
 
         public SystemUser()

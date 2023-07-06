@@ -201,17 +201,16 @@ namespace InventorySystemApplication.Controllers
                     {
                         stock.Quantity_In_Stock -= stockTransfer.Quantity;
                         _context.StockLevelTable.Update(stock);
+                        _context.SaveChanges();
                         break;
                     }
 
                 }
-                foreach (var stock in stocklevlObj)
-                    {
-                        if (stock.Warehouse_Id == stockTransfer.Warehouse_FromId && stock.Product_Id == stockTransfer.Product_Id)
-                        {
-                            if (stock.Quantity_In_Stock == 0)
-                            {
-                                foreach (var wp in warehouseProductObj)
+                var secStockObj = _context.StockLevelTable.Where(n => n.Warehouse_Id == stockTransfer.Warehouse_Id && n.Product_Id == stockTransfer.Product_Id).FirstOrDefault();
+                
+
+                if(secStockObj.Quantity_In_Stock == 0){
+                    foreach (var wp in warehouseProductObj)
                                 {
                                     if (wp.Product_Id == stockTransfer.Product_Id && wp.Warehouse_Id == stockTransfer.Warehouse_FromId)
                                     {
@@ -219,12 +218,8 @@ namespace InventorySystemApplication.Controllers
                                     }
 
                                 }
-                                break;
-
-                            }
-                        }
-
-                    };
+                }
+                
 
 
                 if (exists == 1 && sufficient == 1)

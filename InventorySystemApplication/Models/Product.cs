@@ -14,6 +14,13 @@ namespace InventorySystemApplication.Models
         public DateTime Expiry_Date { get; set;}
         [Required]
         public int Category_Id { get; set;}
+        public string Status { get; set;}
+        public Product()
+        {
+            Status = "Available";
+        }
+      
+
 
 
        

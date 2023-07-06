@@ -72,6 +72,7 @@ namespace InventorySystemApplication.Controllers
             if (ModelState.IsValid)
             {
                 SystemUser systemuser = new SystemUser {
+                User_Id = user.Id,
                 User_Name = user.User_Name ,
                 User_Email = user.User_Email ,
                 User_Telephone = user.User_Telephone ,
@@ -125,13 +126,14 @@ namespace InventorySystemApplication.Controllers
                     {
                         foreach(var obj in systemUserObj)
                         {
-                            if(obj.Warehouse_Id == user.Warehouse_Id)
+                            if(obj.User_Id == user.Id)
                             {
                                 obj.User_Name = user.User_Name;
                                 obj.User_Email = user.User_Email;
                                 obj.User_Telephone = user.User_Telephone;
                                 obj.Warehouse_Id = user.Warehouse_Id;
                                 obj.Password = user.Password;
+                                
                                 _context.SystemUsersTable.Update(obj);
                                 break;
                             }; ;

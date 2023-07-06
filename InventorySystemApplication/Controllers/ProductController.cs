@@ -25,6 +25,7 @@ namespace InventorySystemApplication.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
+            
             List<ProductVM> objProduct = _context.ProductsTable.Select(n => new ProductVM{
                 Id = n.Id,
                 Product_Name= n.Product_Name,

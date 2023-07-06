@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventorySystemApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230620142424_AddTablesToDatabase")]
-    partial class AddTablesToDatabase
+    [Migration("20230705151117_AddTablesToDB")]
+    partial class AddTablesToDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,6 +155,44 @@ namespace InventorySystemApplication.Migrations
                     b.ToTable("StockTransfersTable");
                 });
 
+            modelBuilder.Entity("InventorySystemApplication.Models.SystemUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User_Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("User_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("User_Telephone")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Warehouse_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SystemUsersTable");
+                });
+
             modelBuilder.Entity("InventorySystemApplication.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -162,6 +200,10 @@ namespace InventorySystemApplication.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Email")
                         .IsRequired()
@@ -227,6 +269,54 @@ namespace InventorySystemApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WarehouseProductTable");
+                });
+
+            modelBuilder.Entity("InventorySystemApplication.VMs.UserProductVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Product_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Warehouse_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WarehousesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductsId");
+
+                    b.HasIndex("WarehousesId");
+
+                    b.ToTable("UserProductVM");
+                });
+
+            modelBuilder.Entity("InventorySystemApplication.VMs.UserProductVM", b =>
+                {
+                    b.HasOne("InventorySystemApplication.Models.Product", "Products")
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystemApplication.Models.Warehouse", "Warehouses")
+                        .WithMany()
+                        .HasForeignKey("WarehousesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
+
+                    b.Navigation("Warehouses");
                 });
 #pragma warning restore 612, 618
         }

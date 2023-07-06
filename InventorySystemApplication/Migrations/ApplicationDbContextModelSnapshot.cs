@@ -172,6 +172,9 @@ namespace InventorySystemApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("User_Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("User_Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

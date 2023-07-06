@@ -45,7 +45,7 @@ namespace InventorySystemApplication.Controllers
             {
                 
                     contxt.HttpContext.Session.SetInt32("Warehouse", userStatus.Warehouse_Id);
-                    contxt.HttpContext.Session.SetInt32("User", userStatus.Id);
+                    contxt.HttpContext.Session.SetInt32("User", userStatus.User_Id);
                 
                 
                 return RedirectToAction(nameof(UserMenu));

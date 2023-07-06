@@ -28,6 +28,19 @@ namespace InventorySystemApplication.Controllers
             //return _context.WarehouseProductTable != null ? 
             //            View(await _context.WarehouseProductTable.ToListAsync()) :
             //            Problem("Entity set 'ApplicationDbContext.WarehouseProductTable'  is null.");
+            // List<StockLevels> slData = _context.StockLevelTable.ToList();
+            // List<WarehouseProducts> wpData = _context.WarehouseProductTable.ToList();
+            // if(slData != null & wpData != null){
+            //     foreach(var stock in slData){
+            //         if(stock.Quantity_In_Stock == 0){
+            //             foreach(var prod in wpData){
+            //                 if(stock.Product_Id == prod.Product_Id){
+
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
             List<UserProductVM> objProductsList = _context.WarehouseProductTable.Select(n => new UserProductVM
             {
                 Id = n.Id,
